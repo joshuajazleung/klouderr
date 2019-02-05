@@ -138,7 +138,7 @@ module.exports = {
                 acl: 'public-read',
                 key: function (req, file, cb) {
                     debug(file);
-                    cb(null, `${file.originalname}-${Date.now().toString()}`)
+                    cb(null, `${Date.now().toString()}-${file.originalname}`)
                 }
             }),
             limits: {
