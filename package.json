@@ -13,5 +13,8 @@
   "license": "ISC",
   "engines": {
     "node": "10.x"
+  },
+  "dependencies": {
+    "forever": "^0.15.3"
   }
 }
