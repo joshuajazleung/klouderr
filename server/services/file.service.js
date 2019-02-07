@@ -42,12 +42,14 @@ module.exports = {
             // res.send(fileObj);
             res.send((({
                 name,
+                encodedName,
                 visitCount,
                 downloadCount,
                 url,
                 removeCode
             }) => ({
                 name,
+                encodedName,
                 visitCount,
                 downloadCount,
                 url,
