@@ -7,7 +7,11 @@ const path = require('path');
 const btoa = require('btoa');
 const mime = require('mime');
 const debug = require('debug')('file.service');
-const { removeObjects, getPresignedUrl, s3 } = require('./aws.service');
+const {
+    removeObjects,
+    getPresignedUrl,
+    s3
+} = require('./aws.service');
 
 const fileConfig = require('../config/file.config');
 const dbConfig = require('../config/database.config');
@@ -35,7 +39,20 @@ module.exports = {
             fileObj = file.toObject();
             fileObj.url = url;
             debug(fileObj);
-            res.send(fileObj);
+            // res.send(fileObj);
+            res.send((({
+                name,
+                visitCount,
+                downloadCount,
+                url,
+                removeCode
+            }) => ({
+                name,
+                visitCount,
+                downloadCount,
+                url,
+                removeCode
+            }))(fileObj))
 
             file.visitCount += 1;
             await file.save();
@@ -119,7 +136,7 @@ module.exports = {
                 return res.status(404).end();
             }
 
-            const resultFromAWS = await removeObjects(fileConfig.AWSBucket, [ file.key ]);
+            const resultFromAWS = await removeObjects(fileConfig.AWSBucket, [file.key]);
             const resultFromDB = await file.remove();
             debug(resultFromAWS);
             debug(resultFromDB);

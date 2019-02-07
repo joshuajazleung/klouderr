@@ -5,9 +5,12 @@ const cors = require('cors');
 const bodyParser = require('body-parser')
 const path = require('path')
 const debug = require('debug')('index');
+const compression = require('compression');
 
 require('./jobs/index');
 
+// gzip
+app.use(compression());
 app.use(cors());
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
