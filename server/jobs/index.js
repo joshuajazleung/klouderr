@@ -10,7 +10,7 @@ const fileConfig = require('../config/file.config');
 
 // run every day at midnight
 // remove files that hadn't been downloaded for 7 days
-const removeUntouchedFiles = schedule.scheduleJob('* * * * *', function () {
+const removeUntouchedFiles = schedule.scheduleJob('0 0 * * *', function () {
     debug('************************************');
     debug('Running removeUntouchedFiles');
     debug('************************************');
