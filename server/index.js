@@ -8,6 +8,7 @@ const debug = require('debug')('index');
 const compression = require('compression');
 
 require('./jobs/index');
+require('./database/connect');
 
 // gzip
 app.use(compression());
@@ -26,9 +27,10 @@ const apiRoutes = require('./routes/api');
 app.use('/api', apiRoutes);
 
 app.use(function (err, req, res, next) {
-    debug(err)
-
-    res.status(500).send('Something broke!')
+    if (err.isServer) {
+        debug(err)
+    }
+    return res.status(err.output.statusCode).json(err.output.payload);
 })
 
 if (process.env.NODE_ENV === 'production') {

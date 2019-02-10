@@ -4,9 +4,11 @@ const fileService = require('../services/file.service');
 const options = fileService.getFileOptions();
 const multer = require('multer')(options);
 
-router.get('/files/:id', fileService.getFile);
-router.delete('/files/:id/delete/:code', fileService.deleteFile);
-router.post('/download/:id', fileService.downloadFile);
-router.post('/upload', multer.any(), fileService.uploadFile); 
+const { asyncMiddleware } = require('../helpers');
+
+router.get('/files/:id', asyncMiddleware(fileService.getFile));
+router.delete('/files/:id/delete/:code', asyncMiddleware(fileService.deleteFile));
+router.post('/download/:id', asyncMiddleware(fileService.downloadFile));
+router.post('/upload', multer.any(), asyncMiddleware(fileService.uploadFile)); 
 
 module.exports = router;
