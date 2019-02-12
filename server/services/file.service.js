@@ -10,6 +10,7 @@ const path = require('path');
 const {
     removeObjects,
     getCFPresignedUrl,
+    getS3PresignedUrl,
     s3
 } = require('./aws.service');
 
@@ -31,12 +32,14 @@ module.exports = {
             AWSCloudFrontBaseUrl
         } = fileConfig;
 
-        const url = getCFPresignedUrl(
-            AWSCloudFrontPublicKey, 
-            AWSCloudFrontPrivateKey, 
-            moment().add(15, 'm'),
-            `${AWSCloudFrontBaseUrl}/${file.key}`
-            );
+        // const url = getCFPresignedUrl(
+        //     AWSCloudFrontPublicKey, 
+        //     AWSCloudFrontPrivateKey, 
+        //     moment().add(15, 'm'),
+        //     `${AWSCloudFrontBaseUrl}/${file.key}`
+        //     );
+
+        const url = await getS3PresignedUrl(fileConfig.AWSBucket, file.key);
         fileObj = file.toObject();
         fileObj.url = url;
 
