@@ -121,7 +121,6 @@ module.exports = {
                     debug(file);
                     cb(null, `${Date.now().toString()}-${file.originalname}`)
                 },
-                contentType: multerS3.AUTO_CONTENT_TYPE,
             }),
             limits: {
                 fileSize: 1024 * 1024 * 50,
