@@ -32,20 +32,21 @@ module.exports = {
             AWSCloudFrontBaseUrl
         } = fileConfig;
 
-        // const url = getCFPresignedUrl(
-        //     AWSCloudFrontPublicKey, 
-        //     AWSCloudFrontPrivateKey, 
-        //     moment().add(15, 'm'),
-        //     `${AWSCloudFrontBaseUrl}/${file.key}`
-        //     );
+        const cf_url = getCFPresignedUrl(
+            AWSCloudFrontPublicKey, 
+            AWSCloudFrontPrivateKey, 
+            moment().add(15, 'm'),
+            `${AWSCloudFrontBaseUrl}/${encodeURI(file.key)}`
+            );
 
         const url = await getS3PresignedUrl(fileConfig.AWSBucket, file.key);
         fileObj = file.toObject();
         fileObj.url = url;
+        fileObj.cf_url = cf_url;
 
         debug(fileObj);
 
-        res.send(_.pick(fileObj, ['name', 'encodedName', 'visitCount', 'downloadCount', 'url', 'removeCode']));
+        res.send(_.pick(fileObj, ['name', 'encodedName', 'visitCount', 'downloadCount', 'url', 'cf_url', 'removeCode']));
 
         file.visitCount += 1;
         await file.save();
