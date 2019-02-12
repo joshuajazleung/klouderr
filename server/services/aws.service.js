@@ -1,4 +1,5 @@
 const aws = require('aws-sdk');
+const cfsign = require('aws-cloudfront-sign');
 const fileConfig = require('../config/file.config');
 
 aws.config.update({
@@ -25,7 +26,9 @@ module.exports = {
      * @param {*} cb callback
      */
     removeObjects(bucket, keys, cb) {
-        keys = keys.map(key => ({ Key: key }));
+        keys = keys.map(key => ({
+            Key: key
+        }));
 
         const params = {
             Bucket: bucket,
@@ -45,12 +48,28 @@ module.exports = {
         })
     },
 
-    getPresignedUrl(bucket, key, cb) {
+    getS3PresignedUrl(bucket, key, cb) {
         const params = {
             Bucket: bucket,
             Key: key
         };
 
         return s3.getSignedUrl('getObject', params);
+    },
+
+    getCFPresignedUrl(publicKey, privateKey, expireTime, url) {
+        const signingParams = {
+            keypairId: publicKey,
+            privateKeyString: privateKey,
+            expireTime: expireTime
+        }
+
+        // Generating a signed URL
+        const signedUrl = cfsign.getSignedUrl(
+            url,
+            signingParams
+        );
+
+        return signedUrl;
     }
 }

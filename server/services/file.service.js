@@ -5,9 +5,11 @@ const mime = require('mime');
 const debug = require('debug')('file.service');
 const boom = require('boom');
 const _ = require('lodash');
+const moment = require('moment');
+const path = require('path');
 const {
     removeObjects,
-    getPresignedUrl,
+    getCFPresignedUrl,
     s3
 } = require('./aws.service');
 
@@ -23,7 +25,18 @@ module.exports = {
             throw boom.badRequest('wrong file id.')
         }
 
-        const url = await getPresignedUrl(fileConfig.AWSBucket, file.key);
+        const {
+            AWSCloudFrontPublicKey,
+            AWSCloudFrontPrivateKey,
+            AWSCloudFrontBaseUrl
+        } = fileConfig;
+
+        const url = getCFPresignedUrl(
+            AWSCloudFrontPublicKey, 
+            AWSCloudFrontPrivateKey, 
+            moment().add(15, 'm'),
+            `${AWSCloudFrontBaseUrl}/${file.key}`
+            );
         fileObj = file.toObject();
         fileObj.url = url;
 
