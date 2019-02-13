@@ -40,12 +40,15 @@ module.exports = {
             );
 
         
+        const url_s3 = await getS3PresignedUrl(fileConfig.AWSBucket, file.key);
+        
         fileObj = file.toObject();
         fileObj.url = url;
+        fileObj.url_s3 = url_s3;
 
         debug(fileObj);
 
-        res.send(_.pick(fileObj, ['name', 'encodedName', 'visitCount', 'downloadCount', 'url', 'removeCode']));
+        res.send(_.pick(fileObj, ['name', 'encodedName', 'visitCount', 'downloadCount', 'url', 'url_s3', 'removeCode']));
 
         file.visitCount += 1;
         await file.save();
@@ -123,7 +126,7 @@ module.exports = {
                 },
             }),
             limits: {
-                fileSize: 1024 * 1024 * 50,
+                fileSize: 1024 * 1024 * 50, //50mb
             }
         }
     }
