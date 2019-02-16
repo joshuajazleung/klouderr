@@ -34,7 +34,7 @@ app.use(function (err, req, res, next) {
 })
 
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'public')))
+    app.use(express.static(path.join(__dirname, 'public'), { maxAge: '30 days' }));
 
     app.use("*", function (req, res) {
         res.sendFile(path.join(__dirname, 'public', 'index.html'));
