@@ -2,7 +2,8 @@ const File = require('../models/files');
 const multerS3 = require('multer-s3');
 const btoa = require('btoa');
 const mime = require('mime');
-const debug = require('debug')('file.service');
+const debug = require('debug')('app.file.service');
+const logger = require('../services/logger.service');
 const boom = require('boom');
 const _ = require('lodash');
 const moment = require('moment');
@@ -46,7 +47,7 @@ module.exports = {
         fileObj.url = url;
         fileObj.url_s3 = url_s3;
 
-        debug(fileObj);
+        logger.info(fileObj);
 
         res.send(_.pick(fileObj, ['name', 'encodedName', 'visitCount', 'downloadCount', 'url', 'url_s3', 'removeCode']));
 
@@ -108,8 +109,8 @@ module.exports = {
 
         const resultFromAWS = await removeObjects(fileConfig.AWSBucket, [file.key]);
         const resultFromDB = await file.remove();
-        debug(resultFromAWS);
-        debug(resultFromDB);
+        logger.info(resultFromAWS);
+        logger.info(resultFromDB);
 
         return res.end();
     },
@@ -121,7 +122,7 @@ module.exports = {
                 bucket: fileConfig.AWSBucket,
                 acl: 'public-read',
                 key: function (req, file, cb) {
-                    debug(file);
+                    logger.info(file);
                     cb(null, `${Date.now().toString()}-${file.originalname}`)
                 },
             }),
