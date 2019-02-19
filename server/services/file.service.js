@@ -2,7 +2,7 @@ const File = require('../models/files');
 const multerS3 = require('multer-s3');
 const btoa = require('btoa');
 const mime = require('mime');
-const debug = require('debug')('app.file.service');
+const debug = require('debug')('app:file.service');
 const logger = require('../services/logger.service');
 const boom = require('boom');
 const _ = require('lodash');
@@ -49,7 +49,7 @@ module.exports = {
 
         logger.info(fileObj);
 
-        res.send(_.pick(fileObj, ['name', 'encodedName', 'visitCount', 'downloadCount', 'url', 'url_s3', 'removeCode']));
+        res.send(_.pick(fileObj, ['name', 'extension', 'size', 'encodedName', 'visitCount', 'downloadCount', 'url', 'url_s3', 'removeCode']));
 
         file.visitCount += 1;
         await file.save();
