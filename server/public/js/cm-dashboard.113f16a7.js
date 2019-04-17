@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["cm-dashboard"],{a761:function(n,a,e){"use strict";e.r(a);var t=function(){var n=this,a=n.$createElement,e=n._self._c||a;return e("div",[n._v("\n    dashboard\n")])},r=[],s=e("2877"),c={},l=Object(s["a"])(c,t,r,!1,null,null,null);a["default"]=l.exports}}]);
+//# sourceMappingURL=cm-dashboard.113f16a7.js.map
