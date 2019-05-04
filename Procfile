@@ -1,1 +1,1 @@
-web: ./node_modules/.bin/forever start server/index.js
+web: ./node_modules/.bin/forever -m 50 server/index.js
