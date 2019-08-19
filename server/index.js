@@ -47,7 +47,7 @@ app.use('/api', apiRoutes);
 app.use(function (err, req, res, next) {
     logger.error(err)
     
-    return res.status(err.output.statusCode || 500).json(err.output.payload || err);
+    return res.status(err && err.output && err.output.statusCode || 500).json(err && err.output && err.output.payload || err);
 })
 
 if (env === 'production') {

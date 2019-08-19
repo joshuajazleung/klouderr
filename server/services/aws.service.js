@@ -14,7 +14,10 @@ aws.config.update({
     region: fileConfig.AWSRegion // region of your bucket
 });
 
-const s3 = new aws.S3();
+const endpoint = new aws.Endpoint('sgp1.digitaloceanspaces.com');
+const s3 = new aws.S3({
+    endpoint: endpoint
+});
 
 module.exports = {
     s3,
@@ -51,7 +54,8 @@ module.exports = {
     getS3PresignedUrl(bucket, key, cb) {
         const params = {
             Bucket: bucket,
-            Key: key
+            Key: key,
+            Expires: 60 * 15 // 15 mins
         };
 
         return s3.getSignedUrl('getObject', params);

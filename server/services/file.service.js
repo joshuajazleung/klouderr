@@ -27,24 +27,17 @@ module.exports = {
             throw boom.badRequest('wrong file id.')
         }
 
-        const {
-            AWSCloudFrontPublicKey,
-            AWSCloudFrontPrivateKey,
-            AWSCloudFrontBaseUrl
-        } = fileConfig;
-
-        const url = getCFPresignedUrl(
-            AWSCloudFrontPublicKey, 
-            AWSCloudFrontPrivateKey, 
-            moment().add(15, 'm'),
-            `${AWSCloudFrontBaseUrl}/${encodeURI(file.key)}`
-            );
+        // const url = await s3.getSignedUrl('getObject', {
+        //     Bucket: fileConfig.AWSBucket,
+        //     Key: file.key,
+        //     Expires: 60 * 15 // 15 mins
+        // })
 
         
         const url_s3 = await getS3PresignedUrl(fileConfig.AWSBucket, file.key);
         
         fileObj = file.toObject();
-        fileObj.url = url;
+        // fileObj.url = url;
         fileObj.url_s3 = url_s3;
 
         logger.info(fileObj);
@@ -55,7 +48,7 @@ module.exports = {
         await file.save();
     },
 
-    async uploadFile(req, res, next) {
+    async uploadFile(req, res, next) {    
         const file = req.files[0];
 
         let fileModel = new File({
