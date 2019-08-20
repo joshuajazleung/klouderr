@@ -38,27 +38,25 @@ module.exports = {
                 Bucket: fileConfig.AWSBucket,
                 Key: file.key,
             }).promise();
-            const url_s3 = await getS3PresignedUrl(fileConfig.AWSBucket, file.key);
-            fileObj = file.toObject();
-            fileObj.url_s3 = url_s3;
-
-            logger.info(fileObj);
-
-            res.send(_.pick(fileObj, ['name', 'extension', 'size', 'encodedName', 'visitCount', 'downloadCount', 'url', 'url_s3', 'removeCode']));
-
-            file.visitCount += 1;
-            await file.save();
-          
-          } catch (headErr) {
+    
+        } catch (headErr) {
             if (headErr.code === 'NotFound') {
-              // Handle no object on cloud here  
-              file.remove();
-              throw boom.badRequest('wrong file id.')
+                // Handle no object on cloud here  
+                file.remove();
+                throw boom.badRequest('wrong file id.')
             }
-          }
+        }
         
-        
-        
+        const url_s3 = await getS3PresignedUrl(fileConfig.AWSBucket, file.key);
+        fileObj = file.toObject();
+        fileObj.url_s3 = url_s3;
+
+        logger.info(fileObj);
+
+        res.send(_.pick(fileObj, ['name', 'extension', 'size', 'encodedName', 'visitCount', 'downloadCount', 'url', 'url_s3', 'removeCode']));
+
+        file.visitCount += 1;
+        await file.save();
     },
 
     async uploadFile(req, res, next) {    
