@@ -8,11 +8,13 @@ const boom = require('boom');
 const _ = require('lodash');
 const moment = require('moment');
 const path = require('path');
+const aws = require('aws-sdk');
 const {
     removeObjects,
     getCFPresignedUrl,
     getS3PresignedUrl,
-    s3
+    s3,
+    s3CDN
 } = require('./aws.service');
 
 const fileConfig = require('../config/file.config');
@@ -27,14 +29,8 @@ module.exports = {
             throw boom.badRequest('wrong file id.')
         }
 
-        // const url = await s3.getSignedUrl('getObject', {
-        //     Bucket: fileConfig.AWSBucket,
-        //     Key: file.key,
-        //     Expires: 60 * 15 // 15 mins
-        // })
-
         try { 
-            const headCode = await s3.headObject({
+            const headCode = await s3CDN.headObject({
                 Bucket: fileConfig.AWSBucket,
                 Key: file.key,
             }).promise();
