@@ -22,7 +22,6 @@ const s3 = new aws.S3({
 
 module.exports = {
     s3,
-    s3CDN,
 
     /**
      * Remove objects from AWS S3
