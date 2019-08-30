@@ -19,10 +19,6 @@ const s3 = new aws.S3({
     endpoint: endpoint
 });
 
-const endpointCDN = new aws.Endpoint('sgp1.cdn.digitaloceanspaces.com');
-const s3CDN = new aws.S3({
-    endpoint: endpointCDN
-});
 
 module.exports = {
     s3,
@@ -64,7 +60,7 @@ module.exports = {
             Expires: 60 * 15 // 15 mins
         };
 
-        return s3CDN.getSignedUrl('getObject', params);
+        return s3.getSignedUrl('getObject', params);
     },
 
     getCFPresignedUrl(publicKey, privateKey, expireTime, url) {

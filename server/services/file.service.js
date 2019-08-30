@@ -14,7 +14,6 @@ const {
     getCFPresignedUrl,
     getS3PresignedUrl,
     s3,
-    s3CDN
 } = require('./aws.service');
 
 const fileConfig = require('../config/file.config');
@@ -30,7 +29,7 @@ module.exports = {
         }
 
         try { 
-            const headCode = await s3CDN.headObject({
+            const headCode = await s3.headObject({
                 Bucket: fileConfig.AWSBucket,
                 Key: file.key,
             }).promise();
