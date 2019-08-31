@@ -22,7 +22,7 @@ module.exports = {
     async getFile(req, res, next) {
         const file = await File.findOne({
             encodedName: req.params.id
-        });
+        }); 
 
         if (!file) {
             throw boom.badRequest('wrong file id.')
