@@ -1,0 +1,31 @@
+{
+  "site": {
+    "name": "Klouderr",
+    "desc": "A small free cloud service."
+},
+  "file": {
+    "type": "type",
+    "size": "size",
+    "downloaded": "downloaded",
+    "visited": "visited",
+    "downloadFile": "Download Link {num}"
+  },
+  "upload-files": "Upload files",
+  "upload": {
+    "selectFiles": "Select Files",
+    "drop-here": "Drop files here or click the below button to start uploading.",
+    "files-chosen": "You chose {num} file(s)",
+    "start-uploading": "Start uploading",
+    "download-link": "Download link",
+    "remove-link": "Remove link",
+    "copy": "Copy",
+    "copied": "Copied"
+  },
+  "languages": "Languages",
+  "files-remove": {
+    "desc": "Are you sure you want to remove this file?",
+    "confirm": "Sure",
+    "removed": "Removed"
+  },
+  "not-found": "Sorry, can't find the page you need."
+}
