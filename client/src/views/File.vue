@@ -60,19 +60,24 @@
     </div>
   <!-- <div class="mt-20" v-if="$i18n.locale === 'en'"> -->
     <div class="mt-20 mb-20">
-        <h4 class="title title--no-sp is-6"></h4>
+        <h4 class="title title--no-sp is-6">Worldwide IaaS Public Cloud Services Market Jumped 37.3% in 2019</h4>
 
         <p>
-          Cloud computing has become a prevalent force, bringing economies of scale and breakthrough technological advances to modern organizations, but it is more than just a trend. Cloud computing has evolved at an incredible speed and, in many organizations, is now entwined with the complex technological landscape that supports critical daily operations.
-This ever-expanding cloud environment gives rise to new types of risk. Business and security leaders already face many challenges in protecting their existing IT environment. They must now also find ways to securely use multiple cloud services, supported applications and underlying technical infrastructure.
+          We all know the overall cloud services and software business is growing at warp speed, but it can be beneficial to enterprise decision-makers if experts break down the categories (SaaS, IaaS, PaaS and others) for more clarity. 
 
-The surge in business processes supported by cloud services has been well evidenced by organizations using cloud services store confidential data in the cloud environment. But when using cloud services, organizations are still unsure whether to entrust cloud service providers (CSPs) with their data. CSPs generally provide a certain level of security as substantiated by multiple surveys, but cloud-related security incidents do occur.
-CSPs cannot be solely responsible for the security of their customers’ critical information assets. Cloud security relies equally on the customer’s ability to implement the right level of information security controls. Nevertheless, the cloud environment is complex and diverse, which hinders a consistent approach to deploying and maintaining core security controls. It is vital that organizations are aware of and fulfill their share of the responsibility for securing cloud services to successfully address the cyber threats that increasingly target the cloud environment.
+Industry analyst Gartner Inc. reported Aug. 10 that the worldwide infrastructure as a service (IaaS) market grew a whopping 37.3% in 2019 to total $44.5 billion, up from $32.4 billion in 2018. 
 
+To the surprise of few industry observers, Amazon retained the No. 1 position in the IaaS market in 2019, followed by Microsoft, Alibaba, Google and Tencent.
 
-As organizations acquire new cloud services, they typically choose these from a selection of multiple CSPs and therefore need to deal with a multi-cloud environment, which is characterized using two or more CSPs.
-Organizations favor a multi-cloud environment because it allows them to pick and choose their preferred cloud services across different CSPs (e.g. AWS, Microsoft Azure, Google Cloud, Salesforce). However, each individual CSP adopts its own jargon, its own specific technologies and approaches to security management. The cloud customer therefore needs to acquire a wide range of skills and knowledge to use different cloud services from multiple CSPs securely.
-Organizations require a range of different users to securely access cloud services from within the organization’s network perimeter through secure network connections (e.g. via a gateway). However, organizations also need their cloud services to be accessed from outside the internal perimeter by business partners and users travelling off-site or working remotely, all connecting through a selection of secure network connections as dictated by the organization.
+In 2019, the top five IaaS providers accounted for 80% of the market, up from 77% in 2018. Three-quarters of all IaaS providers had exhibited growth in 2018.
+
+Amazon continued to lead the worldwide IaaS market with an estimated $20 billion of revenue in 2019 and 45% of the total market. Amazon leveraged its No.1 spot in 2018 to build out its capabilities beyond the IaaS layer in the cloud stack and maintain its top position in 2019. 
+
+“Cloud underpins the push to digital business, which remains at the top of CIOs’ agendas,” Sid Nag, research vice president at Gartner, said in a media advisory. “It enables technologies such as the edge, AI, machine learning and 5G, among others. At the end of the day, each of these technologies requires a scalable, elastic and high-capacity infrastructure platform like public cloud IaaS, which is why the market witnessed strong growth.” 
+
+Microsoft remained in the No. 2 position in the IaaS market with more than half of its nearly $8 billion in revenue coming from North America. Microsoft’s IaaS offering grew 57.8% in 2019 as the company leveraged its sales reach and ability to co-sell its Azure offerings with other Microsoft products and services in order to drive adoption.
+
+The dominant IaaS provider in China, Alibaba Cloud, grew 62.4% in 2019 with revenue surpassing $4 billion, up from $2.5 billion in 2018. Alibaba Group will continue to expand its cloud infrastructure business in the coming years and aim to offer cloud-based intelligent solutions to its customers to support their digital transformation process.
         </p>
     </div>
     <!-- <div class="mt-20" v-else>
