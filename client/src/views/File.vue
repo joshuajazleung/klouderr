@@ -39,7 +39,7 @@
     <div class="text-center" v-show="showDownloadButtons">
         <a
         :href="`${file.url_s3}`"
-        class="button is-primary is-rounded mr-4 uppercase font-bold"
+        class="button is-primary is-rounded mt-20 mb-20 mr-4 uppercase font-bold"
         :class="{ 'pointer-events-none': downloaded }"
         target="_blank"
         @click="onFileDownload"
