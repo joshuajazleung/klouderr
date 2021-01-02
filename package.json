@@ -13,11 +13,12 @@
   "author": "",
   "license": "ISC",
   "engines": {
-    "node": "10.x"
+    "node": "15.x"
   },
   "dependencies": {
     "aws-cloudfront-sign": "^2.2.0",
     "forever": "^0.15.3",
-    "moment": "^2.24.0"
+    "moment": "^2.24.0",
+    "node-sass": "^5.0.0"
   }
 }
