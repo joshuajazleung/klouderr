@@ -55,7 +55,7 @@ export default {
     putAction: '/api/upload',
     error: '',
     maximum: 5,
-    size: 1024 * 1024 * 50,
+    size: 1024 * 1024 * 100,
     allowedExtentions:
       'image/*,video/*,application/pdf,application/zip,application/x-rar-compressed,application/x-bittorrent',
   }),
@@ -109,7 +109,7 @@ export default {
         }
 
         if (newFile.size > this.size) {
-          this.error = 'File exceeds the maximum size of 50MB';
+          this.error = 'File exceeds the maximum size of 100MB';
           return prevent();
         }
       }
