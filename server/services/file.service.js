@@ -139,7 +139,7 @@ module.exports = {
         },
       }),
       limits: {
-        fileSize: 1024 * 1024 * 100, //50mb
+        fileSize: 1024 * 1024 * 150, //50mb
       },
     };
   },
