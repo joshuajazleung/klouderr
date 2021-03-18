@@ -27,6 +27,36 @@
         </div>
     </nav>
 
+        <h1 class="title is-5 tracking-wide mt-12 text-center">{{ file.name }}</h1>
+
+    <div class="ads mt-4 text-center">
+        <Adsense data-ad-client="ca-pub-4679085340013866" data-ad-slot="9178412838"></Adsense>
+        <!-- <Adsense data-ad-client="ca-pub-4679085340013866" data-ad-slot="6511749031"></Adsense> -->
+    </div>
+
+    <div class="text-center" v-show="showDownloadButtons">
+        <a
+        :href="`${file.url_s3}`"
+        class="button is-primary is-rounded mt-2 mb-2 mr-4 uppercase font-bold"
+        :class="{ 'pointer-events-none': downloaded }"
+        target="_blank"
+        @click="onFileDownload"
+        :disabled="downloaded"
+      >{{ $t("file.downloadFile", { num: '1' }) }}</a>
+        <!-- <a
+        :href="`${file.url_s3}`"
+        class="button is-rounded is-white uppercase font-bold"
+        :class="{ 'pointer-events-none': downloaded }"
+        target="_blank"
+        @click="onFileDownload"
+        :disabled="downloaded"
+      >{{ $t("file.downloadFile", { num: '2' }) }}</a> -->
+    </div>
+
+    <div class="ads text-center">
+        <Adsense data-ad-client="ca-pub-4679085340013866" data-ad-slot="6511749031"></Adsense>
+    </div>
+
     <hr>
 
   <!-- <div class="mt-20" v-if="$i18n.locale === 'en'"> -->
@@ -52,35 +82,7 @@ The dominant IaaS provider in China, Alibaba Cloud, grew 62.4% in 2019 with reve
         </p>
     </div>
 
-    <h1 class="title is-5 tracking-wide mt-12 text-center">{{ file.name }}</h1>
 
-    <div class="ads mt-10 text-center">
-        <Adsense data-ad-client="ca-pub-4679085340013866" data-ad-slot="9178412838"></Adsense>
-        <!-- <Adsense data-ad-client="ca-pub-4679085340013866" data-ad-slot="6511749031"></Adsense> -->
-    </div>
-
-    <div class="text-center" v-show="showDownloadButtons">
-        <a
-        :href="`${file.url_s3}`"
-        class="button is-primary is-rounded mt-20 mb-20 mr-4 uppercase font-bold"
-        :class="{ 'pointer-events-none': downloaded }"
-        target="_blank"
-        @click="onFileDownload"
-        :disabled="downloaded"
-      >{{ $t("file.downloadFile", { num: '1' }) }}</a>
-        <!-- <a
-        :href="`${file.url_s3}`"
-        class="button is-rounded is-white uppercase font-bold"
-        :class="{ 'pointer-events-none': downloaded }"
-        target="_blank"
-        @click="onFileDownload"
-        :disabled="downloaded"
-      >{{ $t("file.downloadFile", { num: '2' }) }}</a> -->
-    </div>
-
-    <div class="ads text-center">
-        <Adsense data-ad-client="ca-pub-4679085340013866" data-ad-slot="6511749031"></Adsense>
-    </div>
     <!-- <div class="mt-20" v-else>
         <h4 class="title title--no-sp is-6">透视腾讯、阿里财报背后的云端新战局</h4>
 
