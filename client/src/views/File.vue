@@ -31,10 +31,10 @@
 
     <h1 class="title is-5 tracking-wide mt-12 text-center">{{ file.name }}</h1>
 
-    <!-- <div class="ads mt-4 text-center">
+    <div class="ads mt-4 text-center">
         <Adsense data-ad-client="ca-pub-4679085340013866" data-ad-slot="9178412838"></Adsense>
-        <!-- <Adsense data-ad-client="ca-pub-4679085340013866" data-ad-slot="6511749031"></Adsense> -->
-    </div> -->
+        <!-- <Adsense data-ad-client="ca-pub-4679085340013866" data-ad-slot="6511749031"></Adsense>  -->
+    </div> 
 
     <div class="text-center" v-show="showDownloadButtons">
         <a
@@ -55,9 +55,9 @@
       >{{ $t("file.downloadFile", { num: '2' }) }}</a> -->
     </div>
 
-    <!-- <div class="ads text-center">
+    <div class="ads text-center">
         <Adsense data-ad-client="ca-pub-4679085340013866" data-ad-slot="6511749031"></Adsense>
-    </div> -->
+    </div>
 
   <!-- <div class="mt-20" v-if="$i18n.locale === 'en'"> -->
     <!-- <div class="mt-20 mb-20">
